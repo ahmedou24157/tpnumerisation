@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+    <div class="container">
+    <h1>Bonjour Docteur El Benany Mohamed</h1>
+    <h4>Voici mon essai pour résoudre le TP</h4>
+    <h4>Pour sélectionner le code, il suffit de cliquer dessus</h4>
+    <h4>Chaque exercice avec sa photo d’exécution</h4>
+    <!-- debut exo1 -->
+    <div class="dev-con">
+    <h3>COrection de EXO1 TP1 </h3>
+   <p>
+<span style="color:blueviolet">import</span>
+<span style="color:burlywood"> heapq, math</span><br>
+<span style="color:blueviolet">from</span>
+<span style="color:burlywood"> collections</span>
+<span style="color:blueviolet"> import</span>
+<span style="color:burlywood"> Counter</span><br><br>
+
+<span style="color:blueviolet">def</span>
+<span style="color:darkcyan"> huffman_complet</span>():<br><br>
+
+&nbsp;&nbsp;<span style="color:green"># 0. Saisie et export du message</span><br>
+&nbsp;&nbsp;message =
+<span style="color:darkorange">input</span>("Saisissez votre texte : ")<br>
+&nbsp;&nbsp;<span style="color:blueviolet">with</span>
+<span style="color:darkorange"> open</span>("msg.txt","w",encoding="utf-8")
+<span style="color:blueviolet"> as</span> f:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f.write(message)<br><br>
+
+&nbsp;&nbsp;n =
+<span style="color:darkorange">len</span>(message)<br>
+&nbsp;&nbsp;freqs = Counter(message)<br><br>
+
+&nbsp;&nbsp;<span style="color:green"># 1. Fréquences</span><br>
+&nbsp;&nbsp;<span style="color:darkorange">print</span>("1. Fréquences :", dict(freqs))<br><br>
+
+&nbsp;&nbsp;<span style="color:green"># 2–5. Probabilités, Information, Entropie</span><br>
+&nbsp;&nbsp;prob_totale = 0<br>
+&nbsp;&nbsp;entropie = 0<br>
+&nbsp;&nbsp;probs = {}<br><br>
+
+&nbsp;&nbsp;<span style="color:blueviolet">for</span> char, f
+<span style="color:blueviolet"> in</span> freqs.items():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p = f / n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;probs[char] = p<br>
+&nbsp;&nbsp;&nbsp;&nbsp;prob_totale += p<br>
+&nbsp;&nbsp;&nbsp;&nbsp;info = -math.log2(p)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;entropie += p * info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:darkorange">print</span>(
+"Caractère", char,
+"| Prob:", p,
+"| Info:", info, "bits")<br><br>
+
+&nbsp;&nbsp;<span style="color:darkorange">print</span>("Probabilité totale :", prob_totale)<br>
+&nbsp;&nbsp;<span style="color:darkorange">print</span>("Entropie :", entropie)<br><br>
+
+&nbsp;&nbsp;<span style="color:green"># 6. Construction de l'arbre de Huffman</span><br>
+&nbsp;&nbsp;tas = [[f, [char, ""]] <span style="color:blueviolet">for</span> char, f
+<span style="color:blueviolet"> in</span> freqs.items()]<br>
+&nbsp;&nbsp;heapq.heapify(tas)<br><br>
+
+&nbsp;&nbsp;<span style="color:blueviolet">while</span>
+<span style="color:darkorange"> len</span>(tas) &gt; 1:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bas = heapq.heappop(tas)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;haut = heapq.heappop(tas)<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">for</span> paire
+<span style="color:blueviolet"> in</span> bas[1:]:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paire[1] = "0" + paire[1]<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">for</span> paire
+<span style="color:blueviolet"> in</span> haut[1:]:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paire[1] = "1" + paire[1]<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;heapq.heappush(tas,
+[bas[0] + haut[0]] + bas[1:] + haut[1:])<br><br>
+
+&nbsp;&nbsp;<span style="color:green"># 7. Codes et message codé</span><br>
+&nbsp;&nbsp;codes =
+<span style="color:darkorange">dict</span>(heapq.heappop(tas)[1:])<br>
+&nbsp;&nbsp;msg_code = "".join(codes[c]
+<span style="color:blueviolet"> for</span> c
+<span style="color:blueviolet"> in</span> message)<br><br>
+
+&nbsp;&nbsp;<span style="color:darkorange">print</span>("Codes Huffman :", codes)<br>
+&nbsp;&nbsp;<span style="color:darkorange">print</span>("Message codé :", msg_code)<br><br>
+
+<span style="color:green"># Exécution</span><br>
+huffman_complet()
+</p>
+<div class="im">
+    <img src="./exo1.png" alt="Exécution du exo1"  />
+</div>
+</div>
+<!-- fin exo1 -->
+
+    <!-- debut exo2 -->
+    <div class="dev-con">
+    <h3>Corection de EXO2 TP1 </h3>
+   <p>
+<span style="color:blueviolet">import</span>
+<span style="color:burlywood"> heapq, math</span><br>
+<span style="color:blueviolet">from</span>
+<span style="color:burlywood"> collections</span>
+<span style="color:blueviolet"> import</span>
+<span style="color:burlywood"> Counter</span><br><br>
+
+<span style="color:blueviolet">def</span>
+<span style="color:darkcyan"> huffman_complet</span>():<br><br>
+
+&nbsp;&nbsp;<span style="color:green"># 0. Saisie et export du message</span><br>
+&nbsp;&nbsp;message =
+<span style="color:darkorange">input</span>("Saisissez votre texte : ")<br>
+&nbsp;&nbsp;<span style="color:blueviolet">with</span>
+<span style="color:darkorange"> open</span>("msg.txt","w",encoding="utf-8")
+<span style="color:blueviolet"> as</span> f:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f.write(message)<br><br>
+
+&nbsp;&nbsp;n =
+<span style="color:darkorange">len</span>(message)<br>
+&nbsp;&nbsp;freqs = Counter(message)<br><br>
+
+&nbsp;&nbsp;<span style="color:green"># 1. Fréquences</span><br>
+&nbsp;&nbsp;<span style="color:darkorange">print</span>("1. Fréquences :", dict(freqs))<br><br>
+
+&nbsp;&nbsp;<span style="color:green"># 2–5. Probabilités, Information, Entropie</span><br>
+&nbsp;&nbsp;prob_totale = 0<br>
+&nbsp;&nbsp;entropie = 0<br>
+&nbsp;&nbsp;probs = {}<br><br>
+
+&nbsp;&nbsp;<span style="color:blueviolet">for</span> char, f
+<span style="color:blueviolet"> in</span> freqs.items():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p = f / n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;probs[char] = p<br>
+&nbsp;&nbsp;&nbsp;&nbsp;prob_totale += p<br>
+&nbsp;&nbsp;&nbsp;&nbsp;info = -math.log2(p)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;entropie += p * info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:darkorange">print</span>(
+"Caractère", char,
+"| Prob:", p,
+"| Info:", info, "bits")<br><br>
+
+&nbsp;&nbsp;<span style="color:darkorange">print</span>("Probabilité totale :", prob_totale)<br>
+&nbsp;&nbsp;<span style="color:darkorange">print</span>("Entropie :", entropie)<br><br>
+
+&nbsp;&nbsp;<span style="color:green"># 6. Construction de l'arbre de Huffman</span><br>
+&nbsp;&nbsp;tas = [[f, [char, ""]] <span style="color:blueviolet">for</span> char, f
+<span style="color:blueviolet"> in</span> freqs.items()]<br>
+&nbsp;&nbsp;heapq.heapify(tas)<br><br>
+
+&nbsp;&nbsp;<span style="color:blueviolet">while</span>
+<span style="color:darkorange"> len</span>(tas) &gt; 1:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bas = heapq.heappop(tas)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;haut = heapq.heappop(tas)<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">for</span> paire
+<span style="color:blueviolet"> in</span> bas[1:]:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paire[1] = "0" + paire[1]<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">for</span> paire
+<span style="color:blueviolet"> in</span> haut[1:]:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paire[1] = "1" + paire[1]<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;heapq.heappush(tas,
+[bas[0] + haut[0]] + bas[1:] + haut[1:])<br><br>
+
+&nbsp;&nbsp;<span style="color:green"># 7. Codes et message codé</span><br>
+&nbsp;&nbsp;codes =
+<span style="color:darkorange">dict</span>(heapq.heappop(tas)[1:])<br>
+&nbsp;&nbsp;msg_code = "".join(codes[c]
+<span style="color:blueviolet"> for</span> c
+<span style="color:blueviolet"> in</span> message)<br><br>
+
+&nbsp;&nbsp;<span style="color:darkorange">print</span>("Codes Huffman :", codes)<br>
+&nbsp;&nbsp;<span style="color:darkorange">print</span>("Message codé :", msg_code)<br><br>
+
+<span style="color:green"># Exécution</span><br>
+huffman_complet()
+</p>
+<div class="im" >
+    <img src="./exo2s.png" alt="Exécution du exo2"  />
+</div>
+</div>
+<!-- fin exo2 -->
+    <!-- debut exo3 -->
+    <div class="dev-con">
+    <h3>COrection de EXO1 TP2 </h3>
+   <p>
+<span style="color:blueviolet">import</span>
+<span style="color:burlywood"> math</span><br>
+<span style="color:blueviolet">from</span>
+<span style="color:burlywood"> collections </span>
+<span style="color:blueviolet">import</span>
+<span style="color:burlywood"> Counter</span><br><br>
+
+texte = <span style="color:darkorange">"institut supérieur du numérique"</span><br>
+N = <span style="color:burlywood">len</span>(texte)<br>
+freq = Counter(texte)<br><br>
+
+probs = {}<br>
+<span style="color:blueviolet">for</span> c <span style="color:blueviolet">in</span> freq:<br>
+&nbsp;&nbsp;probs[c] = freq[c] / N<br><br>
+
+H = 0<br>
+<span style="color:blueviolet">for</span> p <span style="color:blueviolet">in</span> probs.values():<br>
+&nbsp;&nbsp;H += p * math.log2(1/p)<br><br>
+
+symboles = sorted(probs.items(), key=<span style="color:blueviolet">lambda</span> x: x[1], reverse=True)<br><br>
+
+codes = {}<br><br>
+
+<span style="color:blueviolet">def</span> shannon_fano(liste, prefix=<span style="color:darkorange">""</span>):<br>
+&nbsp;&nbsp;<span style="color:blueviolet">if</span> len(liste) == 1:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;codes[liste[0][0]] = prefix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">return</span><br><br>
+&nbsp;&nbsp;total = sum(p <span style="color:blueviolet">for</span> _, p <span style="color:blueviolet">in</span> liste)<br>
+&nbsp;&nbsp;somme = 0<br>
+&nbsp;&nbsp;<span style="color:blueviolet">for</span> i <span style="color:blueviolet">in</span> range(len(liste)):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;somme += liste[i][1]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">if</span> somme >= total / 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">break</span><br><br>
+&nbsp;&nbsp;shannon_fano(liste[:i+1], prefix + <span style="color:darkorange">"0"</span>)<br>
+&nbsp;&nbsp;shannon_fano(liste[i+1:], prefix + <span style="color:darkorange">"1"</span>)<br><br>
+
+shannon_fano(symboles)<br><br>
+
+message_code = <span style="color:darkorange">""</span><br>
+<span style="color:blueviolet">for</span> c <span style="color:blueviolet">in</span> texte:<br>
+&nbsp;&nbsp;message_code += codes[c]<br><br>
+
+L = 0<br>
+<span style="color:blueviolet">for</span> c <span style="color:blueviolet">in</span> probs:<br>
+&nbsp;&nbsp;L += probs[c] * len(codes[c])<br><br>
+
+longueur_originale = N * 8<br>
+longueur_compressee = len(message_code)<br>
+taux_compression = longueur_compressee / longueur_originale<br>
+efficacite = H / L<br><br>
+
+<span style="color:burlywood">print</span>("Texte :", texte)<br>
+<span style="color:burlywood">print</span>("\nCodes Shannon-Fano :")<br>
+<span style="color:blueviolet">for</span> c <span style="color:blueviolet">in</span> codes:<br>
+&nbsp;&nbsp;<span style="color:burlywood">print</span>(f"'{c}' : {codes[c]}")<br><br>
+
+<span style="color:burlywood">print</span>("\nEntropie :", H)<br>
+<span style="color:burlywood">print</span>("Longueur du message compressé :", longueur_compressee, "bits")<br>
+<span style="color:burlywood">print</span>("Taux de compression :", taux_compression)<br>
+<span style="color:burlywood">print</span>("Efficacité :", efficacite)
+</p>
+
+<div class="im">
+    <img src="./exo3.png" alt="Exécution du exo1"  />
+</div>
+</div>
+<!-- fin exo3 -->
+    <!-- debut exo4 -->
+    <div class="dev-con-tp" >
+    <h3>COrection de EXO2 TP2 </h3>
+  <p>
+<span style="color:blueviolet">import</span>
+<span style="color:burlywood"> numpy </span>
+<span style="color:blueviolet">as</span>
+<span style="color:burlywood"> np</span><br>
+<span style="color:blueviolet">from</span>
+<span style="color:burlywood"> PIL </span>
+<span style="color:blueviolet">import</span>
+<span style="color:burlywood"> Image</span><br><br>
+
+img = <span style="color:burlywood">Image.open</span>("image.gif").<span style="color:burlywood">convert</span>("1")<br>
+image = <span style="color:burlywood">np.array</span>(img).<span style="color:burlywood">flatten</span>()<br><br>
+
+<span style="color:blueviolet">def</span> compression_rle(image):<br>
+&nbsp;&nbsp;<span style="color:blueviolet">if</span> <span style="color:burlywood">len</span>(image) == 0:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">return</span> []<br><br>
+&nbsp;&nbsp;rle = []<br>
+&nbsp;&nbsp;count = 1<br>
+&nbsp;&nbsp;prev = image[0]<br><br>
+&nbsp;&nbsp;<span style="color:blueviolet">for</span> bit <span style="color:blueviolet">in</span> image[1:]:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">if</span> bit == prev:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count += 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">else</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rle.append(count)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev = bit<br>
+&nbsp;&nbsp;rle.append(count)<br>
+&nbsp;&nbsp;<span style="color:blueviolet">return</span> rle<br><br>
+
+<span style="color:blueviolet">def</span> gain_compression(image, rle):<br>
+&nbsp;&nbsp;original_size = <span style="color:burlywood">len</span>(image)<br>
+&nbsp;&nbsp;compressed_size = <span style="color:burlywood">len</span>(rle)<br>
+&nbsp;&nbsp;gain = (1 - compressed_size / original_size) * 100<br>
+&nbsp;&nbsp;<span style="color:blueviolet">return</span> gain<br><br>
+
+rle_image = compression_rle(image)<br>
+gain = gain_compression(image, rle_image)<br><br>
+
+<span style="color:burlywood">print</span>("Image originale :", <span style="color:burlywood">len</span>(image), "bits")<br>
+<span style="color:burlywood">print</span>("Taille compressée :", <span style="color:burlywood">len</span>(rle_image), "entiers")<br>
+<span style="color:burlywood">print</span>(f"Gain de compression : {gain:.2f}%")<br>
+<span style="color:burlywood">print</span>("Exemple des premières valeurs compressées :", rle_image[:20])
+</p>
+
+<div style="width: 300px;">
+    <img src="./exo4.png" alt="Exécution du exo4"  />
+</div>
+</div>
+<!-- fin exo4 -->
+     <!-- debut exo5 -->
+    <div class="dev-con">
+    <h3>COrection de EXO3 TP2 </h3>
+ <p>
+<span style="color:blueviolet">def</span> lz78_compression(texte):<br>
+&nbsp;&nbsp;dico = {}<br>
+&nbsp;&nbsp;i = 1<br>
+&nbsp;&nbsp;w = <span style="color:darkorange">""</span><br>
+&nbsp;&nbsp;resultat = []<br><br>
+&nbsp;&nbsp;<span style="color:blueviolet">for</span> c <span style="color:blueviolet">in</span> texte:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wc = w + c<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">if</span> wc <span style="color:blueviolet">in</span> dico:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w = wc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">else</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">if</span> w == <span style="color:darkorange">""</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index = 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">else</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index = dico[w]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultat.append((index, c))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dico[wc] = i<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i += 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w = <span style="color:darkorange">""</span><br>
+&nbsp;&nbsp;<span style="color:blueviolet">if</span> w != <span style="color:darkorange">""</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;resultat.append((dico[w], <span style="color:darkorange">""</span>))<br>
+&nbsp;&nbsp;<span style="color:blueviolet">return</span> resultat<br><br>
+
+<span style="color:blueviolet">def</span> lz78_decompression(code):<br>
+&nbsp;&nbsp;dico = {}<br>
+&nbsp;&nbsp;i = 1<br>
+&nbsp;&nbsp;texte = <span style="color:darkorange">""</span><br><br>
+&nbsp;&nbsp;<span style="color:blueviolet">for</span> index, c <span style="color:blueviolet">in</span> code:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">if</span> index == 0:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entry = c<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blueviolet">else</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entry = dico[index] + c<br>
+&nbsp;&nbsp;&nbsp;&nbsp;texte += entry<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dico[i] = entry<br>
+&nbsp;&nbsp;&nbsp;&nbsp;i += 1<br>
+&nbsp;&nbsp;<span style="color:blueviolet">return</span> texte<br><br>
+
+texte = <span style="color:darkorange">"ABABABABABA"</span><br>
+compressed = lz78_compression(texte)<br>
+decompressed = lz78_decompression(compressed)<br><br>
+
+<span style="color:burlywood">print</span>("Texte original :", texte)<br>
+<span style="color:burlywood">print</span>("Compression LZ78 :", compressed)<br>
+<span style="color:burlywood">print</span>("Texte décompressé :", decompressed)<br>
+<span style="color:burlywood">print</span>("Compression correcte :", texte == decompressed)
+</p>
+
+<div class="im">
+    <img src="./exo5.png" alt="Exécution du exo4"  />
+</div>
+</div>
+<!-- fin exo5 -->
+</div>
+</body>
+</html>

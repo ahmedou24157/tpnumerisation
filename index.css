@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h4{
+    background: rgb(13, 13, 53);
+    padding: 10px;
+    border-radius: 12px;
+}
+body{
+    background-color: #123;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    gap:4px;
+}
+p{
+    width: 300px;
+    height: 200px;
+    overflow-y: auto;
+    outline: 2px solid red;
+    padding: 10px;
+    user-select: all;
+}
+.dev-con-tp{
+    /* outline: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:80px ;
+}
+h3{
+    color:white;
+    font-size: 23px;
+    background-color: rgb(41, 41, 187);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+
+div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap:5px;
+    margin:10px;
+}
+.im{
+    width:300px;
+    height: 150px;
+    margin: 10px;
+}
+img{
+    width:100%;
+}
+/* عرض شريط التمرير */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* خلفية شريط التمرير */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* المقبض (الجزء المتحرك) */
+::-webkit-scrollbar-thumb {
+    background: red; /* بنفسجي */
+    border-radius: 10px;
+}
+
+/* عند تمرير الماوس */
+::-webkit-scrollbar-thumb:hover {
+    background:red;
+}
+.dev-con{
+    margin-bottom: 10px;
+}
+.container{
+    gap:60px;
+}
