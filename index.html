@@ -26,7 +26,7 @@
 <span style="color:blueviolet">def</span>
 <span style="color:darkcyan"> huffman_complet</span>():<br><br>
 
-&nbsp;&nbsp;<span style="color:green"># 0. Saisie et export du message</span><br>
+<!-- &nbsp;&nbsp;<span style="color:green"># 0. Saisie et export du message</span><br> -->
 &nbsp;&nbsp;message =
 <span style="color:darkorange">input</span>("Saisissez votre texte : ")<br>
 &nbsp;&nbsp;<span style="color:blueviolet">with</span>
@@ -38,10 +38,10 @@
 <span style="color:darkorange">len</span>(message)<br>
 &nbsp;&nbsp;freqs = Counter(message)<br><br>
 
-&nbsp;&nbsp;<span style="color:green"># 1. Fréquences</span><br>
+<!-- &nbsp;&nbsp;<span style="color:green"># 1. Fréquences</span><br> -->
 &nbsp;&nbsp;<span style="color:darkorange">print</span>("1. Fréquences :", dict(freqs))<br><br>
 
-&nbsp;&nbsp;<span style="color:green"># 2–5. Probabilités, Information, Entropie</span><br>
+<!-- &nbsp;&nbsp;<span style="color:green"># 2–5. Probabilités, Information, Entropie</span><br> -->
 &nbsp;&nbsp;prob_totale = 0<br>
 &nbsp;&nbsp;entropie = 0<br>
 &nbsp;&nbsp;probs = {}<br><br>
@@ -61,7 +61,7 @@
 &nbsp;&nbsp;<span style="color:darkorange">print</span>("Probabilité totale :", prob_totale)<br>
 &nbsp;&nbsp;<span style="color:darkorange">print</span>("Entropie :", entropie)<br><br>
 
-&nbsp;&nbsp;<span style="color:green"># 6. Construction de l'arbre de Huffman</span><br>
+<!-- &nbsp;&nbsp;<span style="color:green"># 6. Construction de l'arbre de Huffman</span><br> -->
 &nbsp;&nbsp;tas = [[f, [char, ""]] <span style="color:blueviolet">for</span> char, f
 <span style="color:blueviolet"> in</span> freqs.items()]<br>
 &nbsp;&nbsp;heapq.heapify(tas)<br><br>
@@ -82,7 +82,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;heapq.heappush(tas,
 [bas[0] + haut[0]] + bas[1:] + haut[1:])<br><br>
 
-&nbsp;&nbsp;<span style="color:green"># 7. Codes et message codé</span><br>
+<!-- &nbsp;&nbsp;<span style="color:green"># 7. Codes et message codé</span><br> -->
 &nbsp;&nbsp;codes =
 <span style="color:darkorange">dict</span>(heapq.heappop(tas)[1:])<br>
 &nbsp;&nbsp;msg_code = "".join(codes[c]
@@ -92,7 +92,7 @@
 &nbsp;&nbsp;<span style="color:darkorange">print</span>("Codes Huffman :", codes)<br>
 &nbsp;&nbsp;<span style="color:darkorange">print</span>("Message codé :", msg_code)<br><br>
 
-<span style="color:green"># Exécution</span><br>
+<!-- <span style="color:green"># Exécution</span><br> -->
 huffman_complet()
 </p>
 <div class="im">
@@ -115,7 +115,7 @@ huffman_complet()
 <span style="color:blueviolet">def</span>
 <span style="color:darkcyan"> huffman_complet</span>():<br><br>
 
-&nbsp;&nbsp;<span style="color:green"># 0. Saisie et export du message</span><br>
+<!-- &nbsp;&nbsp;<span style="color:green"># 0. Saisie et export du message</span><br> -->
 &nbsp;&nbsp;message =
 <span style="color:darkorange">input</span>("Saisissez votre texte : ")<br>
 &nbsp;&nbsp;<span style="color:blueviolet">with</span>
@@ -127,10 +127,10 @@ huffman_complet()
 <span style="color:darkorange">len</span>(message)<br>
 &nbsp;&nbsp;freqs = Counter(message)<br><br>
 
-&nbsp;&nbsp;<span style="color:green"># 1. Fréquences</span><br>
+<!-- &nbsp;&nbsp;<span style="color:green"># 1. Fréquences</span><br> -->
 &nbsp;&nbsp;<span style="color:darkorange">print</span>("1. Fréquences :", dict(freqs))<br><br>
 
-&nbsp;&nbsp;<span style="color:green"># 2–5. Probabilités, Information, Entropie</span><br>
+<!-- &nbsp;&nbsp;<span style="color:green"># 2–5. Probabilités, Information, Entropie</span><br> -->
 &nbsp;&nbsp;prob_totale = 0<br>
 &nbsp;&nbsp;entropie = 0<br>
 &nbsp;&nbsp;probs = {}<br><br>
@@ -150,7 +150,7 @@ huffman_complet()
 &nbsp;&nbsp;<span style="color:darkorange">print</span>("Probabilité totale :", prob_totale)<br>
 &nbsp;&nbsp;<span style="color:darkorange">print</span>("Entropie :", entropie)<br><br>
 
-&nbsp;&nbsp;<span style="color:green"># 6. Construction de l'arbre de Huffman</span><br>
+<!-- &nbsp;&nbsp;<span style="color:green"># 6. Construction de l'arbre de Huffman</span><br> -->
 &nbsp;&nbsp;tas = [[f, [char, ""]] <span style="color:blueviolet">for</span> char, f
 <span style="color:blueviolet"> in</span> freqs.items()]<br>
 &nbsp;&nbsp;heapq.heapify(tas)<br><br>
@@ -171,7 +171,7 @@ huffman_complet()
 &nbsp;&nbsp;&nbsp;&nbsp;heapq.heappush(tas,
 [bas[0] + haut[0]] + bas[1:] + haut[1:])<br><br>
 
-&nbsp;&nbsp;<span style="color:green"># 7. Codes et message codé</span><br>
+<!-- &nbsp;&nbsp;<span style="color:green"># 7. Codes et message codé</span><br> -->
 &nbsp;&nbsp;codes =
 <span style="color:darkorange">dict</span>(heapq.heappop(tas)[1:])<br>
 &nbsp;&nbsp;msg_code = "".join(codes[c]
@@ -181,7 +181,7 @@ huffman_complet()
 &nbsp;&nbsp;<span style="color:darkorange">print</span>("Codes Huffman :", codes)<br>
 &nbsp;&nbsp;<span style="color:darkorange">print</span>("Message codé :", msg_code)<br><br>
 
-<span style="color:green"># Exécution</span><br>
+<!-- <span style="color:green"># Exécution</span><br> -->
 huffman_complet()
 </p>
 <div class="im" >
